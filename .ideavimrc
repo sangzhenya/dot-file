@@ -1,0 +1,101 @@
+set keep-english-in-normal-and-restore-in-insert
+
+"显示模式"
+set showmode
+"显示行号"
+set number
+"显示相对行号"
+set relativenumber
+"保持在光标上下最少行数"
+set scrolloff=3
+"历史记录条目
+set history=1000
+"启用 Surround 插件"
+"set surround
+"启用多光标"
+set multiple-cursors
+"启用 Smart Case"
+set smartcase
+" 模式搜索实时预览,增量搜索
+set incsearch
+" 设置搜索高亮
+set hlsearch
+
+"设置 leader 键"
+let mapleader=" "
+
+set highlightedyank
+
+"EasyMotion 相关配置
+set easymotion
+let g:EasyMotion_smartcase = 1
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+nmap s <Plug>(easymotion-sn)
+
+"Normal 模式
+"跳转 Action 相关
+"跳转到声明处"
+nnoremap <leader>gd :action GotoDeclaration<CR>
+"跳转到实现处"
+nnoremap <leader>gi :action GotoImplementation<CR>
+"跳转到上一个方法"
+nnoremap <leader>gj :action MethodUp<CR>
+"跳转到下一个方法"
+nnoremap <leader>gk :action MethodDown<CR>
+"文件结构"
+nnoremap <leader>gs :action FileStructurePopup<CR>
+"文件上下文"
+nnoremap <leader>gc :action EditorContextInfo<CR>
+"跳转到 Error 处"
+nnoremap <leader>ge :action GotoNextError<CR>
+"跳转到指定 Class "
+nnoremap <leader>go :action GotoClass<CR>
+"跳转到指定 文件 "
+nnoremap <leader>gf :action GotoFile<CR>
+"打开关闭 Annotate"
+nnoremap <leader>gn :action Annotate<CR>
+
+"快速跳转
+nnoremap <leader>kk 15k
+nnoremap <leader>jj 15j
+
+"其他 Action"
+nnoremap <leader>cr :action CopyReference<CR>
+nnoremap <leader>ed :action Debug<CR>
+nnoremap <leader>ea :action ToggleLineBreakpoint<CR>
+
+"删除不存放剪贴板
+"nnoremap x "_x
+"nnoremap X "_X
+nnoremap d "_d
+nnoremap dd "_dd
+nnoremap D "_D
+
+"行首行未跳转
+"nnoremap H ^
+nnoremap J ^
+"nnoremap L $
+nnoremap K $
+
+"Find
+nnoremap / :action Find<CR>
+" refresh
+"noremap \r <ESC>:source ~/.ideavimrc<CR>
+
+"Visual 模式
+"删除不存放剪贴板
+vnoremap d "_d
+vnoremap dd "_dd
+vnoremap p "_dP
+vnoremap s "_s
+
+"自定义跳转"
+vnoremap J ^
+vnoremap K $
+vnoremap <leader>kk 5k
+vnoremap <leader>jj 5j
+
+"设置剪贴板"
+set clipboard=unnamedset
+clipboard+=ideaput
