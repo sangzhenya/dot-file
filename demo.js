@@ -2,7 +2,7 @@
 
 [rewrite_local]
 
-^https?:\/\/.*\.example\.com url script-analyze-echo-response https://gist.githubusercontent.com/sangzhenya/864670e380875cba15a8d264ae263a35/raw/141099585820b5b33f37173cc736403c82ee977f/demo.js
+^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo.js
 
 [mitm]
 
@@ -64,7 +64,7 @@ async function AliyunAuth() {
     };
     $task.fetch(s).then(t => {
       try {
-        console.log("AliyunAuth:" + t)
+        console.log("AliyunAuth:" + JSON.stringify(t))
         let a = JSON.parse(t.body);
         a.access_token ? ($prefs.setValueForKey(a.access_token, "pikpak_ck"), obj = {
           success: !0,
@@ -98,7 +98,7 @@ async function AliyunEntry() {
           };
         $task.fetch(reqBody).then(t => {
           try {
-            console.log("AliyunEntry:" + t)
+            console.log("AliyunEntry:" + JSON.stringify(t))
             let items = JSON.parse(t.body).files;
             let shares = JSON.stringify(
               items.map((item) => {
@@ -135,7 +135,7 @@ async function AliyunDownLoad() {
     };
     $task.fetch(s).then(t => {
       try {
-        console.log("AliyunDownLoad:" + t)
+        console.log("AliyunDownLoad:" + JSON.stringify(t))
         let link = JSON.parse(t.body).links["application\/octet-stream"].url.replace(/https/, "http");
         $done({
           status: "HTTP/1.1 302 Found",
