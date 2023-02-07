@@ -2,7 +2,7 @@
 
 [rewrite_local]
 
-^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo3.js
+^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo4.js
 
 [mitm]
 
@@ -92,7 +92,7 @@ async function AliyunEntry() {
           headers: headers
         }
         let path = body.match(/folder_path=([^&]*)/) ? "root" : t.match(/folder_path=([^&]*)/);
-				let a = path ? ((req.url = req.url.replace(/(parent_id=)/, `$1${path}`)), "files") : "shares";
+				let a = path ? ((req.url = req.url.replace(/(parent_id=)/, `$1${path}`)), "shares") : "shares";
         console.log(JSON.stringify(req))
         $task.fetch(req).then(t => {
           try {
