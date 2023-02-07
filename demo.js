@@ -45,10 +45,8 @@ function hex2str(hex) {
 
 async function AliyunAuth() {
   return new Promise(e => {
-    let account = $prefs.valueForKey("pikpak_account") || (body = decodeURIComponent(body), 0);
-    let username = account ? account.split("-")[0] : body.match(/account=([^&]+)/)[1];
-    let password = account ? account.split("-")[1] : body.match(/passwd=([^&]+)/)[1];
-    $prefs.setValueForKey(`${username}-${password}`, `pikpak_account`);
+    let username = body.match(/account=([^&]+)/)[1];
+    let password = body.match(/passwd=([^&]+)/)[1];
 
     console.log(`username: ${username}`)
     console.log(`password: ${password}`)
