@@ -2,7 +2,7 @@
 
 [rewrite_local]
 
-^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo2.js
+^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo3.js
 
 [mitm]
 
@@ -86,15 +86,15 @@ async function AliyunEntry() {
       if (-1 != t.indexOf("list_share") || -1 != t.indexOf("method=list")) {
         headers.authorization = "Bearer " + accessToken;
 
+        let req = {
+          url: `https://api-drive.mypikpak.com/drive/v1/files?filters=%7B%22phase%22%3A%7B%22eq%22%3A%22PHASE_TYPE_COMPLETE%22%7D%2C%22trashed%22%3A%7B%22eq%22%3Afalse%7D%7D&parent_id=&thumbnail_size=SIZE_LARGE`,
+          method: "GET",
+          headers: headers
+        }
         let path = body.match(/folder_path=([^&]*)/) ? "root" : t.match(/folder_path=([^&]*)/);
 				let a = path ? ((req.url = req.url.replace(/(parent_id=)/, `$1${path}`)), "files") : "shares";
-
-        let reqBody = {
-            url: `https://api-drive.mypikpak.com/drive/v1/files?filters=%7B%22phase%22%3A%7B%22eq%22%3A%22PHASE_TYPE_COMPLETE%22%7D%2C%22trashed%22%3A%7B%22eq%22%3Afalse%7D%7D&parent_id=&thumbnail_size=SIZE_LARGE`,
-            method: "GET",
-            headers: headers
-          };
-        $task.fetch(reqBody).then(t => {
+        console.log(JSON.stringify(req))
+        $task.fetch(req).then(t => {
           try {
             console.log("AliyunEntry:" + JSON.stringify(t))
             let items = JSON.parse(t.body).files;
