@@ -2,7 +2,7 @@
 
 [rewrite_local]
 
-^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo1.js
+^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo2.js
 
 [mitm]
 
@@ -45,8 +45,8 @@ function hex2str(hex) {
 
 async function AliyunAuth() {
   return new Promise(e => {
-    let username = body.match(/account=([^&]+)/)[1];
-    let password = body.match(/passwd=([^&]+)/)[1];
+    let username = decodeURIComponent(body.match(/account=([^&]+)/)[1]);
+    let password = decodeURIComponent(body.match(/passwd=([^&]+)/)[1]);
 
     console.log(`username: ${username}`)
     console.log(`password: ${password}`)
