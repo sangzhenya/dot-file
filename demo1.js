@@ -2,7 +2,7 @@
 
 [rewrite_local]
 
-^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo.js
+^https?:\/\/.*\.example\.com url script-analyze-echo-response https://raw.githubusercontent.com/sangzhenya/dot-file/main/demo1.js
 
 [mitm]
 
